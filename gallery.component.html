@@ -1,0 +1,76 @@
+<p></p>
+ <div class="container " >
+  <div class="card " >
+
+    <div class="card-header bg-primary"  >Gallery</div>
+    <div class="card-body">
+
+
+        <form #f="ngForm" (ngSubmit)="onSearch(f.value)">
+          <div class="form-group ">
+            <label class="col-form-label-lg" >Keyword</label>
+
+            <input  required name="keyWord" ngModel  [(ngModel)]="keyWord" type="text"  >
+            <button type="submit" [disabled]="!f.valid"  class="btn btn-primary"> Search</button>
+          </div>
+        </form>
+
+
+
+<div class="row">
+       <div *ngFor="let img of pagePhotos.hits"  class=" col-md-4 " >
+
+
+         <div class="card  cadre"  >
+
+          <div class="card-header bg-primary"  >
+            <img class="rounded-circle" src="{{img.userImageURL}}" width="50" height="50"/>
+            <p>User:{{img.user}}</p>
+
+          </div>
+          <div class="card-body" >
+            <div>
+
+              <img src="{{img.previewURL}}" />
+
+            </div>
+
+
+          </div>
+         </div>
+         <p></p>
+       </div>
+
+
+
+</div>
+
+      <div class="row">
+
+        <ul class=" nav nav-pills pagination ">
+          <li [ngClass]="{'active':currentPage==(i+1)}" class="page-item click"  *ngFor="let page of pages; let i=index">
+
+            <a   class="page-link click "  (click)="goToPage(i)" >{{ i+1}}</a>
+
+          </li>
+        </ul>
+
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+  </div>
+ </div>
+<p></p>
+
